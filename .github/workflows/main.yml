@@ -26,24 +26,24 @@ jobs:
           danveras/kubenews:${{ github.run_number }}
           danveras/kubenews:latest
           
-  # CD:
-    # runs-on: ubuntu-latest
-    # needs: [CI]
-    # steps:
-    # - name: Checkout do repositorio
-      # uses: actions/checkout@v4.1.1
-    # - name: Configuração da credencial da AWS
-      # uses: aws-actions/configure-aws-credentials@v4
-      # with:
-        # aws-region: east-us-1
-        # aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY_ID }} 
-        # aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-    # - name: Configurar o KubeConfig
-      # run: aws eks update-kubeconfig --name imersao-eks --region us-east-1
-    # - name: Deploy to Kubernetes cluster
-      # uses: Azure/k8s-deploy@v4.9
-      # with:
-        # manifest: |
-          # ./kube-news/k8s/deployment.yaml
-        # images: |
-          # danveras/kubenews:${{ github.run_number }}
+  CD:
+    runs-on: ubuntu-latest
+    needs: [CI]
+    steps:
+    - name: Checkout do repositorio
+      uses: actions/checkout@v4.1.1
+    - name: Configuração da credencial da AWS
+      uses: aws-actions/configure-aws-credentials@v4
+      with:
+        aws-region: east-us-1
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY_ID }} 
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+    - name: Configurar o KubeConfig
+      run: aws eks update-kubeconfig --name imersao-eks --region us-east-1
+    - name: Deploy to Kubernetes cluster
+      uses: Azure/k8s-deploy@v4.9
+      with:
+        manifest: |
+          ./kube-news/k8s/deployment.yaml
+        images: |
+          danveras/kubenews:${{ github.run_number }}
