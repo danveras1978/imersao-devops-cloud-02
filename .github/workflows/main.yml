@@ -9,7 +9,7 @@ jobs:
   CI:
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout do respositorio
+    - name: Checkout do respostorio
       uses: actions/checkout@v4.1.1
     - name: Efeturar o login no docker hub
       run: echo "Executar o docker login"
