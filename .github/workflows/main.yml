@@ -29,8 +29,8 @@ jobs:
         file: ./kube-news/src/Dockerfile
         push: true
         tags:
-          danveras/kubenews:${{ github.run_number }}
-          danveras/kubenews:latest
+          fabricioveronez/kube-news:${{ github.run_number }}
+          fabricioveronez/kube-news:latest
      
   CD:
     runs-on: ubuntu-latest
