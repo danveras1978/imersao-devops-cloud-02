@@ -28,7 +28,7 @@ jobs:
         context: ./kube-news/src
         file: ./kube-news/src/Dockerfile
         push: true
-        tags: 
+        tags: |
           danveras/kubenews:${{ github.run_number }}
           danveras/kubenews:latest
           
@@ -54,8 +54,8 @@ jobs:
     - name: Deploy to Kubernetes cluster
     uses: Azure/k8s-deploy@v4.9
     with:
-      manifest:
+      manifest: |
         ./kube-news/k8s/deployment.yaml
-      images:
+      images: |
         danveras/kubenews:${{ github.run_number }}
       
