@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout do repositorio
-      uses: actions/checkout@v4.1.0
+      uses: actions/checkout@v4.1.1
     - name: Docker Login
       uses: docker/login-action@v3.0.0
       with:
@@ -31,7 +31,7 @@ jobs:
     needs: [CI]
     steps:
     - name: Checkout do repositorio
-      uses: actions/checkout@v4.1.0
+      uses: actions/checkout@v4.1.1
     - name: Configuração da credencial da AWS
       uses: aws-actions/configure-aws-credentials@v4
       with:
